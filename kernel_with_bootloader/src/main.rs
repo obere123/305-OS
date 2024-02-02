@@ -151,7 +151,8 @@ fn my_entry_point(boot_info: &'static mut bootloader_api::BootInfo) -> ! {
 
     //For premptive multitasking, we use interrupts
     interrupts::init();
-
+    let input = input_str!("Obere's string: ");
+    println!("\nString entered by Obere '{}'", input);
     //Let's experience getting string from keyboard and saving into a variable for use
     print!("Enter string: ");
     let input = match input_str() {
@@ -159,6 +160,8 @@ fn my_entry_point(boot_info: &'static mut bootloader_api::BootInfo) -> ! {
         None => "".to_owned()
     };
     println!("\nString entered is '{}'", input);
+
+  
 
 
     // invoke a breakpoint exception for test

@@ -23,6 +23,24 @@ macro_rules! println {
         write!($crate::FRAME_BUFFER_WRITER.lock(), "{}", format_args_nl!($($arg)*)).unwrap();
     }};
 }
+//start
+//macro for defense
+#[macro_export]
+#[allow_internal_unstable(print_internals,format_args_nl)]
+macro_rules! input_str {
+    ($prompt:expr) => {{
+        print!("{}",$prompt);
+        match input_str(){
+            Some(value)=> value,
+            None=> "".to_owned(),
+        }
+    }
+        
+    };
+}
+
+
+//end
 
 pub fn input_str() -> Option<String> {
     let mut input: String = "".to_string();
